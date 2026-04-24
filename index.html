@@ -127,7 +127,7 @@ margin-bottom:48px; animation:fadeUp .9s ease .34s both;
 .ep-row { display:flex; gap:7px; margin-bottom:10px; }
 .ep { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; }
 .ep-track { width:100%; height:48px; background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.12); position:relative; overflow:hidden; }
-.ep-fill { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,var(–gold-dark),var(–gold)); height:0; transition:height 2.2s cubic-bezier(0.22,1,0.36,1); }
+.ep-fill { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,var(–gold-dark),var(–gold)); transition:height 2.2s cubic-bezier(0.22,1,0.36,1); }
 .ep-name { font-family:‘Cinzel’,serif; font-size:8px; color:var(–text-muted); letter-spacing:0.1em; }
 .p-caption { font-family:‘Lato’,sans-serif; font-size:11px; color:var(–text-muted); text-align:center; letter-spacing:0.05em; }
 .p-caption strong { color:var(–gold); }
@@ -317,7 +317,15 @@ footer { padding:48px 20px 28px; }
   <div class="hero-ring"></div>
   <div class="hero-glow"></div>
 
-  <div class="eyebrow">Holy Scripture Research Foundation</div>
+  <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:10px;animation:fadeUp .9s ease both;">
+    <div style="font-family:'Cinzel',serif;font-size:7px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">THE</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="display:block;width:40px;height:1px;background:linear-gradient(to right,transparent,var(--gold));flex-shrink:0;"></span>
+      <span style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);">Holy Scripture Research</span>
+      <span style="display:block;width:40px;height:1px;background:linear-gradient(to left,transparent,var(--gold));flex-shrink:0;"></span>
+    </div>
+    <div style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-top:3px;">Foundation</div>
+  </div>
 
   <h1>Bring <span style="font-family:'Cinzel',serif;font-weight:700;font-style:normal;color:var(--gold-light);display:block;font-size:0.85em;letter-spacing:0.05em;margin-top:4px;margin-bottom:4px;">THE STICK<br>OF JOSEPH</span><span style="font-size:0.6em;font-weight:300;font-family:'Cormorant Garamond',serif;display:block;">to the World</span></h1>
 
@@ -333,12 +341,12 @@ footer { padding:48px 20px 28px; }
       <div class="p-total">Total raised: <strong>Coming Soon</strong></div>
     </div>
     <div class="ep-row">
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="68"></div></div><div class="ep-name">Ep 1</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="42"></div></div><div class="ep-name">Ep 2</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="29"></div></div><div class="ep-name">Ep 3</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="18"></div></div><div class="ep-name">Ep 4</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="9"></div></div><div class="ep-name">Ep 5</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="5"></div></div><div class="ep-name">Ep 6</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="68" style="height:68%"></div></div><div class="ep-name">Ep 1</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="42" style="height:42%"></div></div><div class="ep-name">Ep 2</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="29" style="height:29%"></div></div><div class="ep-name">Ep 3</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="18" style="height:18%"></div></div><div class="ep-name">Ep 4</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="9" style="height:9%"></div></div><div class="ep-name">Ep 5</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="5" style="height:5%"></div></div><div class="ep-name">Ep 6</div></div>
     </div>
     <div class="p-caption"><strong>Every dollar counts</strong> — be one of our founding donors!</div>
   </div>
