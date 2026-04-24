@@ -126,8 +126,8 @@ margin-bottom:48px; animation:fadeUp .9s ease .34s both;
 .p-total strong { color:var(–gold-light); font-size:20px; }
 .ep-row { display:flex; gap:7px; margin-bottom:10px; }
 .ep { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; }
-.ep-track { width:100%; height:48px; background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.12); position:relative; overflow:hidden; }
-.ep-fill { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,var(–gold-dark),var(–gold)); transition:height 2.2s cubic-bezier(0.22,1,0.36,1); }
+.ep-track { width:100%; height:48px; background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.12); position:relative; overflow:hidden; display:flex; align-items:flex-end; }
+.ep-fill { width:100%; background:linear-gradient(to top,var(–gold-dark),var(–gold)); display:block; }
 .ep-name { font-family:‘Cinzel’,serif; font-size:8px; color:var(–text-muted); letter-spacing:0.1em; }
 .p-caption { font-family:‘Lato’,sans-serif; font-size:11px; color:var(–text-muted); text-align:center; letter-spacing:0.05em; }
 .p-caption strong { color:var(–gold); }
@@ -341,12 +341,12 @@ footer { padding:48px 20px 28px; }
       <div class="p-total">Total raised: <strong>Coming Soon</strong></div>
     </div>
     <div class="ep-row">
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="68" style="height:68%"></div></div><div class="ep-name">Ep 1</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="42" style="height:42%"></div></div><div class="ep-name">Ep 2</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="29" style="height:29%"></div></div><div class="ep-name">Ep 3</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="18" style="height:18%"></div></div><div class="ep-name">Ep 4</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="9" style="height:9%"></div></div><div class="ep-name">Ep 5</div></div>
-      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="5" style="height:5%"></div></div><div class="ep-name">Ep 6</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:68%"></div></div><div class="ep-name">Ep 1</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:42%"></div></div><div class="ep-name">Ep 2</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:29%"></div></div><div class="ep-name">Ep 3</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:18%"></div></div><div class="ep-name">Ep 4</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:9%"></div></div><div class="ep-name">Ep 5</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" style="height:5%"></div></div><div class="ep-name">Ep 6</div></div>
     </div>
     <div class="p-caption"><strong>Every dollar counts</strong> — be one of our founding donors!</div>
   </div>
