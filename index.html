@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate | Holy Scripture Research Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dark: #8B6914;
+    --deep: #0D0A06;
+    --dark: #150F08;
+    --mid: #2C2418;
+    --parchment: #F5EDD8;
+    --text-light: #D4C4A0;
+    --text-muted: #8A7A5A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Lato',sans-serif; background:var(--deep); color:var(--parchment); overflow-x:hidden; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    background:linear-gradient(to bottom, rgba(13,10,6,0.97) 0%, transparent 100%);
+  }
+  .nav-logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
+  .nav-seal {
+    width:48px; height:48px; border:1.5px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cinzel',serif; font-size:18px; color:var(--gold);
+    background:rgba(201,168,76,0.06); flex-shrink:0;
+  }
+  .nav-name { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.12em; color:var(--parchment); line-height:1.5; }
+  .nav-name span { display:block; font-size:9px; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; }
+  .nav-links { display:flex; gap:32px; list-style:none; font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; }
+  .nav-links a { color:var(--text-light); text-decoration:none; transition:color .2s; }
+  .nav-links a:hover { color:var(--gold); }
+  .nav-btn {
+    background:var(--gold); color:var(--deep);
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; font-weight:700; text-transform:uppercase;
+    padding:11px 24px; text-decoration:none; transition:all .2s;
+  }
+  .nav-btn:hover { background:var(--gold-light); transform:translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    position:relative; min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:130px 24px 80px; overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% 25%, rgba(201,168,76,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 85% 80%, rgba(139,105,20,0.07) 0%, transparent 60%),
+      linear-gradient(160deg, #0F0B05 0%, #1C1409 45%, #0D0A06 100%);
+  }
+  .hero-ring {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:min(720px,92vw); height:min(720px,92vw);
+    border:1px solid rgba(201,168,76,0.06); border-radius:50%; pointer-events:none;
+  }
+  .hero-ring::before {
+    content:''; position:absolute; inset:50px;
+    border:1px solid rgba(201,168,76,0.04); border-radius:50%;
+  }
+  @keyframes glowPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+  .hero-glow {
+    position:absolute; top:15%; left:50%; transform:translateX(-50%);
+    width:600px; height:280px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 70%);
+    animation:glowPulse 4s ease-in-out infinite; pointer-events:none;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  .eyebrow {
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.5em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:24px;
+    display:flex; align-items:center; gap:18px;
+    animation:fadeUp .9s ease both;
+  }
+  .eyebrow::before { content:''; display:block; width:55px; height:1px; background:linear-gradient(to right,transparent,var(--gold)); }
+  .eyebrow::after  { content:''; display:block; width:55px; height:1px; background:linear-gradient(to left,transparent,var(--gold)); }
+
+  .hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(52px,9vw,108px); font-weight:300; line-height:1.02;
+    color:var(--parchment); margin-bottom:14px;
+    animation:fadeUp .9s ease .1s both;
+  }
+  .hero h1 em { font-style:italic; color:var(--gold-light); }
+
+  .hero-sub {
+    font-family:'Cinzel',serif; font-size:clamp(10px,1.5vw,15px); letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:36px;
+    animation:fadeUp .9s ease .18s both;
+  }
+
+  .hero-desc {
+    max-width:600px; font-size:17px; line-height:1.85;
+    color:var(--text-light); font-weight:300; margin-bottom:52px;
+    animation:fadeUp .9s ease .26s both;
+  }
+
+  /* PROGRESS */
+  .progress {
+    width:min(700px,92vw); border:1px solid rgba(201,168,76,0.22);
+    background:rgba(255,255,255,0.025); padding:30px 36px 26px;
+    margin-bottom:48px; animation:fadeUp .9s ease .34s both;
+  }
+  .progress-top { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; }
+  .p-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); }
+  .p-total { font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--text-muted); }
+  .p-total strong { color:var(--gold-light); font-size:20px; }
+  .ep-row { display:flex; gap:7px; margin-bottom:10px; }
+  .ep { flex:1; display:flex; flex-direction:column; align-items:center; gap:5px; }
+  .ep-track { width:100%; height:48px; background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.12); position:relative; overflow:hidden; }
+  .ep-fill { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,var(--gold-dark),var(--gold)); height:0; transition:height 2.2s cubic-bezier(0.22,1,0.36,1); }
+  .ep-name { font-family:'Cinzel',serif; font-size:8px; color:var(--text-muted); letter-spacing:0.1em; }
+  .p-caption { font-family:'Lato',sans-serif; font-size:11px; color:var(--text-muted); text-align:center; letter-spacing:0.05em; }
+  .p-caption strong { color:var(--gold); }
+
+  .cta-row { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation:fadeUp .9s ease .42s both; }
+  .btn-g {
+    background:var(--gold); color:var(--deep);
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.3em; text-transform:uppercase; font-weight:700;
+    padding:16px 44px; text-decoration:none; border:none; cursor:pointer; transition:all .25s; display:inline-block;
+  }
+  .btn-g:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.28); }
+  .btn-o {
+    background:transparent; color:var(--parchment);
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.3em; text-transform:uppercase;
+    padding:16px 44px; text-decoration:none; border:1px solid rgba(201,168,76,0.35); transition:all .25s; display:inline-block;
+  }
+  .btn-o:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+  .scroll-cue {
+    position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-family:'Cinzel',serif; font-size:8px; letter-spacing:0.35em; color:var(--text-muted);
+    animation:bob 2.5s ease-in-out infinite;
+  }
+  .scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,var(--gold),transparent); }
+
+  .gold-rule { height:1px; background:linear-gradient(to right,transparent,var(--gold) 30%,var(--gold) 70%,transparent); }
+
+  /* IMPACT */
+  .impact { background:var(--parchment); color:var(--deep); padding:90px 48px 80px; text-align:center; }
+  .sec-eye {
+    font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.45em; text-transform:uppercase;
+    color:var(--gold-dark); margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+  }
+  .sec-eye::before,.sec-eye::after { content:''; display:block; width:48px; height:1px; background:var(--gold-dark); opacity:.35; }
+  .sec-h { font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5vw,58px); font-weight:300; line-height:1.08; margin-bottom:18px; }
+  .sec-h em { font-style:italic; color:var(--gold-dark); }
+  .sec-p { max-width:620px; margin:0 auto 56px; font-size:17px; line-height:1.85; color:#5A4830; font-weight:300; }
+  .i-cards { display:flex; gap:3px; max-width:980px; margin:0 auto; }
+  .i-card { flex:1; background:var(--deep); color:var(--parchment); padding:44px 28px; text-align:center; position:relative; }
+  .i-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--gold); }
+  .i-num { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--gold); line-height:1; margin-bottom:10px; }
+  .i-lab { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); line-height:1.6; }
+
+  /* QUOTE */
+  .quote-band { background:var(--mid); padding:80px 48px; text-align:center; position:relative; }
+  .quote-band::before,.quote-band::after { content:''; position:absolute; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent); }
+  .quote-band::before { top:0; } .quote-band::after { bottom:0; }
+  .q-inner { max-width:780px; margin:0 auto; }
+  .q-mark { font-family:'Cormorant Garamond',serif; font-size:80px; color:var(--gold); opacity:.3; line-height:0.5; margin-bottom:20px; }
+  .q-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(22px,3.5vw,34px); font-weight:300; line-height:1.5; color:var(--parchment); margin-bottom:28px; }
+  .q-text em { color:var(--gold-light); font-style:normal; }
+  .q-src { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); }
+
+  /* WAYS */
+  .ways { background:var(--dark); padding:90px 48px; position:relative; }
+  .ways::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent); }
+  .ways-inner { max-width:960px; margin:0 auto; }
+  .ways-hdr { text-align:center; margin-bottom:56px; }
+  .ways-h { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,5vw,54px); font-weight:300; color:var(--parchment); line-height:1.1; margin-bottom:14px; }
+  .ways-h em { font-style:italic; color:var(--gold-light); }
+  .ways-p { font-size:16px; color:var(--text-muted); line-height:1.75; font-weight:300; max-width:640px; margin:0 auto; }
+
+  /* Donate form */
+  .d-box { border:1px solid rgba(201,168,76,0.22); background:rgba(255,255,255,0.025); padding:44px 48px 48px; margin-bottom:48px; }
+  .d-title {
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold);
+    margin-bottom:28px; display:flex; align-items:center; gap:14px;
+  }
+  .d-title::after { content:''; flex:1; height:1px; background:rgba(201,168,76,0.2); }
+
+  .freq-row { display:flex; gap:3px; margin-bottom:28px; }
+  .f-tab {
+    flex:1; background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.15);
+    color:var(--text-muted); font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+    padding:13px; cursor:pointer; transition:all .2s;
+  }
+  .f-tab.on { background:var(--gold); border-color:var(--gold); color:var(--deep); font-weight:700; }
+  .f-tab:not(.on):hover { border-color:var(--gold); color:var(--text-light); }
+
+  .amts { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:8px; }
+  .a-btn {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
+    color:var(--parchment); font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:300;
+    padding:20px 12px; cursor:pointer; transition:all .2s; text-align:center; position:relative;
+  }
+  .a-btn small { display:block; font-family:'Lato',sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-muted); margin-top:4px; }
+  .a-btn:hover,.a-btn.on { background:rgba(201,168,76,0.1); border-color:var(--gold); color:var(--gold-light); }
+  .a-btn.on::after { content:'✓'; position:absolute; top:7px; right:11px; font-size:11px; color:var(--gold); font-family:'Lato',sans-serif; }
+
+  .c-input {
+    width:100%; background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
+    color:var(--parchment); font-family:'Cormorant Garamond',serif; font-size:22px;
+    text-align:center; padding:18px; outline:none; transition:border-color .2s; margin-bottom:24px;
+  }
+  .c-input::placeholder { color:var(--text-muted); }
+  .c-input:focus { border-color:var(--gold); }
+
+  .d-submit {
+    width:100%; background:var(--gold); color:var(--deep);
+    font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.3em; font-weight:700; text-transform:uppercase;
+    padding:18px; border:none; cursor:pointer; transition:all .25s;
+  }
+  .d-submit:hover { background:var(--gold-light); box-shadow:0 6px 28px rgba(201,168,76,0.28); }
+
+  /* Ways grid */
+  .w-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:3px; }
+  .w-card { background:rgba(255,255,255,0.025); border:1px solid rgba(201,168,76,0.12); padding:32px 28px; transition:border-color .2s; }
+  .w-card:hover { border-color:rgba(201,168,76,0.35); }
+  .w-icon { font-size:26px; margin-bottom:14px; }
+  .w-name { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+  .w-body { font-size:14px; line-height:1.75; color:var(--text-muted); font-weight:300; }
+  .w-body a { color:var(--gold); text-decoration:none; }
+  .w-body a:hover { text-decoration:underline; }
+  .w-body strong { color:var(--text-light); font-weight:400; }
+
+  /* FAQ */
+  .faq { background:var(--parchment); color:var(--deep); padding:90px 48px; }
+  .faq-in { max-width:780px; margin:0 auto; }
+  .faq-h { font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,52px); font-weight:300; color:var(--deep); text-align:center; margin-bottom:52px; }
+  .faq-h em { font-style:italic; color:var(--gold-dark); }
+  .faq-item { border-bottom:1px solid rgba(139,105,20,0.25); }
+  .faq-q {
+    width:100%; background:none; border:none; text-align:left; cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    padding:22px 0; font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--deep); transition:color .2s;
+  }
+  .faq-q:hover { color:var(--gold-dark); }
+  .faq-q .chev { font-size:16px; color:var(--gold-dark); transition:transform .3s; flex-shrink:0; }
+  .faq-q.open .chev { transform:rotate(45deg); }
+  .faq-ans { font-size:15px; line-height:1.8; color:#5A4830; font-weight:300; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+  .faq-ans.open { max-height:400px; padding-bottom:22px; }
+  .faq-ans a { color:var(--gold-dark); }
+
+  /* FOOTER */
+  footer { background:var(--deep); border-top:1px solid rgba(201,168,76,0.15); padding:60px 48px 36px; text-align:center; }
+  .f-logo { font-family:'Cinzel',serif; font-size:14px; letter-spacing:0.2em; color:var(--gold); margin-bottom:6px; }
+  .f-tag { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--text-muted); margin-bottom:36px; }
+  .f-links { display:flex; flex-wrap:wrap; justify-content:center; gap:28px; list-style:none; margin-bottom:36px; }
+  .f-links a { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); text-decoration:none; transition:color .2s; }
+  .f-links a:hover { color:var(--gold); }
+  .f-rule { height:1px; background:linear-gradient(to right,transparent,rgba(201,168,76,0.2),transparent); margin-bottom:24px; }
+  .f-legal { font-size:12px; color:var(--text-muted); line-height:1.75; }
+  .f-legal a { color:var(--gold); text-decoration:none; }
+
+  @media(max-width:768px){
+    nav { padding:16px 20px; }
+    .nav-links,.nav-btn { display:none; }
+    .hero { padding:100px 20px 70px; }
+    .progress { padding:22px 20px; }
+    .impact,.ways,.faq { padding:60px 20px; }
+    .i-cards { flex-direction:column; }
+    .d-box { padding:28px 20px 32px; }
+    .amts { grid-template-columns:repeat(2,1fr); }
+    footer { padding:48px 20px 28px; }
+    .quote-band { padding:60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-seal">✦</div>
+    <div class="nav-name">
+      Holy Scripture Research Foundation
+      <span>Supporting The Stick of Joseph</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#impact">About</a></li>
+    <li><a href="#ways">Ways to Give</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#ways" class="nav-btn">Donate Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-glow"></div>
+
+  <div class="eyebrow">Holy Scripture Research Foundation</div>
+
+  <h1>Bring <em>The Stick<br>of Joseph</em><br>to the World</h1>
+
+  <div class="hero-sub">Honest Conversations &nbsp;·&nbsp; Real Faith &nbsp;·&nbsp; Lasting Hope</div>
+
+  <p class="hero-desc">
+    The Stick of Joseph is a podcast and media project dedicated to tackling life's hardest faith questions with honesty, compassion, and courage. Your gift makes every episode, event, and resource possible — and keeps it free for everyone.
+  </p>
+
+  <div class="progress">
+    <div class="progress-top">
+      <div class="p-label">Season Production Progress</div>
+      <div class="p-total">Total raised: <strong>$48,720</strong></div>
+    </div>
+    <div class="ep-row">
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="68"></div></div><div class="ep-name">Ep 1</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="42"></div></div><div class="ep-name">Ep 2</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="29"></div></div><div class="ep-name">Ep 3</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="18"></div></div><div class="ep-name">Ep 4</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="9"></div></div><div class="ep-name">Ep 5</div></div>
+      <div class="ep"><div class="ep-track"><div class="ep-fill" data-pct="5"></div></div><div class="ep-name">Ep 6</div></div>
+    </div>
+    <div class="p-caption"><strong>68%</strong> of Episode 1 is funded — help us cross the finish line!</div>
+  </div>
+
+  <div class="cta-row">
+    <a href="#ways" class="btn-g">Give Now</a>
+    <a href="https://thestickofjoseph.com" target="_blank" class="btn-o">Learn About the Project</a>
+  </div>
+
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="sec-eye">Your Gift Makes an Impact</div>
+  <h2 class="sec-h">Bring Your Loaves and Fish —<br><em>Let God Feed the Multitude</em></h2>
+  <p class="sec-p">Every dollar given to the Holy Scripture Research Foundation goes directly to funding the production, translation, and free distribution of The Stick of Joseph — bringing honest, courageous faith conversations to seekers and believers around the world.</p>
+  <div class="i-cards">
+    <div class="i-card">
+      <div class="i-num">50+</div>
+      <div class="i-lab">Episodes Produced &<br>Freely Available</div>
+    </div>
+    <div class="i-card">
+      <div class="i-num">600+</div>
+      <div class="i-lab">Languages &<br>Translations Targeted</div>
+    </div>
+    <div class="i-card">
+      <div class="i-num">100K+</div>
+      <div class="i-lab">Listeners Reached<br>Worldwide</div>
+    </div>
+    <div class="i-card">
+      <div class="i-num">Free</div>
+      <div class="i-lab">For the World —<br>Always</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-band">
+  <div class="q-inner">
+    <div class="q-mark">"</div>
+    <p class="q-text">The Stick of Joseph gave me a safe space to ask the hard questions I was too afraid to bring up anywhere else. Each episode feels honest, compassionate, and uplifting — it helped me <em>rediscover hope</em> in my faith journey.</p>
+    <div class="q-src">— Listener, The Stick of Joseph Community</div>
+  </div>
+</section>
+
+<!-- WAYS TO GIVE -->
+<section class="ways" id="ways">
+  <div class="ways-inner">
+    <div class="ways-hdr">
+      <div class="sec-eye" style="--gold-dark:var(--gold)">
+        <span style="display:block;width:48px;height:1px;background:rgba(201,168,76,0.3)"></span>
+        Easy Ways to Give
+        <span style="display:block;width:48px;height:1px;background:rgba(201,168,76,0.3)"></span>
+      </div>
+      <h2 class="ways-h">Every Donation Makes It Possible<br><em>for Others to Come and See</em></h2>
+      <p class="ways-p">As a 501(c)(3) non-profit ministry, the Holy Scripture Research Foundation exists to make The Stick of Joseph possible and to share it freely with the world. Your charitable donations are tax-deductible to the extent allowed by your country of residence.</p>
+    </div>
+
+    <!-- Online Form -->
+    <div class="d-box">
+      <div class="d-title">Give Online</div>
+      <div class="freq-row">
+        <button class="f-tab on" onclick="setFreq(this)">Give Once</button>
+        <button class="f-tab" onclick="setFreq(this)">Give Monthly</button>
+        <button class="f-tab" onclick="setFreq(this)">Give Annually</button>
+      </div>
+      <div class="amts">
+        <button class="a-btn on" onclick="setAmt(this,'25')">$25 <small>Believer</small></button>
+        <button class="a-btn" onclick="setAmt(this,'50')">$50 <small>Supporter</small></button>
+        <button class="a-btn" onclick="setAmt(this,'100')">$100 <small>Patron</small></button>
+        <button class="a-btn" onclick="setAmt(this,'250')">$250 <small>Champion</small></button>
+        <button class="a-btn" onclick="setAmt(this,'500')">$500 <small>Foundation</small></button>
+        <button class="a-btn" onclick="setAmt(this,'custom')">Other <small>Custom Amount</small></button>
+      </div>
+      <input class="c-input" id="custAmt" type="number" placeholder="Enter your amount ($)" style="display:none">
+      <button class="d-submit" onclick="handleDonate()">Complete My Gift &rarr;</button>
+    </div>
+
+    <!-- Other methods -->
+    <div class="w-grid">
+      <div class="w-card">
+        <div class="w-icon">💻</div>
+        <div class="w-name">Online via Patreon</div>
+        <div class="w-body">Support through ACH, PayPal, debit or credit card via <a href="https://patreon.com/TheStickofJoseph" target="_blank">Patreon</a> for exclusive member benefits and behind-the-scenes access.</div>
+      </div>
+      <div class="w-card">
+        <div class="w-icon">🏦</div>
+        <div class="w-name">Wire Transfer</div>
+        <div class="w-body">To make a wire transfer, please <a href="mailto:donate@holyscriptureresearch.org">contact our team</a> for full wire instructions. We respond within one business day.</div>
+      </div>
+      <div class="w-card">
+        <div class="w-icon">📈</div>
+        <div class="w-name">Stock Donation</div>
+        <div class="w-body">Donate a stock, bond, mutual fund, or ETF. Email <a href="mailto:donate@holyscriptureresearch.org">donate@holyscriptureresearch.org</a> to begin a stock transfer and receive our brokerage details.</div>
+      </div>
+      <div class="w-card">
+        <div class="w-icon">✉️</div>
+        <div class="w-name">Check by Mail</div>
+        <div class="w-body">
+          Make checks payable to:<br><br>
+          <strong>Holy Scripture Research Foundation</strong><br><br>
+          Please <a href="mailto:donate@holyscriptureresearch.org">email us</a> for our mailing address. Include your email address so we can send your receipt.
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-icon">🤝</div>
+        <div class="w-name">Donor Advised Fund</div>
+        <div class="w-body">
+          Provide your DAF sponsor with our information:<br><br>
+          <strong>Organization:</strong> Holy Scripture Research Foundation<br>
+          <strong>Contact:</strong> <a href="mailto:donate@holyscriptureresearch.org">donate@holyscriptureresearch.org</a><br><br>
+          We'll supply EIN and mailing address upon request.
+        </div>
+      </div>
+      <div class="w-card">
+        <div class="w-icon">🏛️</div>
+        <div class="w-name">IRA Distribution</div>
+        <div class="w-body">Make a qualified charitable distribution directly from your IRA. Contact us for the organization name, EIN, and mailing address needed by your IRA custodian.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-in">
+    <div class="sec-eye">Common Questions</div>
+    <h2 class="faq-h">Frequently Asked <em>Questions</em></h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the Holy Scripture Research Foundation? <span class="chev">+</span></button>
+      <div class="faq-ans">The Holy Scripture Research Foundation is a 501(c)(3) non-profit established to support the production of The Stick of Joseph — a faith-based podcast and media project dedicated to honest, courageous conversations about scripture, faith, and the Restoration. All donations fund production, distribution, and outreach.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is The Stick of Joseph? <span class="chev">+</span></button>
+      <div class="faq-ans">The Stick of Joseph is a podcast and media project dedicated to tackling life's hardest faith questions with honesty, compassion, and courage. Through podcasts, books, events, and resources, it creates a safe space where seekers, believers, and doubters alike can explore truth, strengthen faith, and find encouragement for their journey. Visit <a href="https://thestickofjoseph.com" target="_blank">thestickofjoseph.com</a> to learn more.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How does my donation support The Stick of Joseph? <span class="chev">+</span></button>
+      <div class="faq-ans">Your tax-deductible gift directly funds episode production, research, guest costs, translation into additional languages, live event hosting such as the Lecture Series, and keeping all content freely accessible to listeners worldwide — no subscription ever required.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is my donation tax-deductible? <span class="chev">+</span></button>
+      <div class="faq-ans">Yes. The Holy Scripture Research Foundation is recognized by the U.S. Internal Revenue Service as a 501(c)(3) organization. Donations are tax-deductible to the extent allowed by your country of residence. You will receive a receipt via email upon completing your gift.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I set up a recurring monthly gift? <span class="chev">+</span></button>
+      <div class="faq-ans">Absolutely. Monthly giving is one of the most powerful ways to sustain the mission long-term. Select "Give Monthly" in the form above, or support via <a href="https://patreon.com/TheStickofJoseph" target="_blank">Patreon</a> for additional member benefits. You may cancel or adjust your recurring gift at any time.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are there other ways to support besides donating? <span class="chev">+</span></button>
+      <div class="faq-ans">Yes! Subscribe on YouTube, leave a review on Apple Podcasts, share episodes with friends, attend a Lecture Series event, purchase books through Plain & Precious Publishing, or shop Witness Apparel. Every action expands the reach of honest faith conversations.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Who do I contact with questions about my gift? <span class="chev">+</span></button>
+      <div class="faq-ans">Please reach out to <a href="mailto:donate@holyscriptureresearch.org">donate@holyscriptureresearch.org</a> for questions about your gift, tax receipts, wire transfers, stock donations, donor advised funds, or IRA distributions. We are happy to help.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Holy Scripture Research Foundation</div>
+  <div class="f-tag">Supporting The Stick of Joseph — Honest Conversations, Real Faith</div>
+  <ul class="f-links">
+    <li><a href="#impact">About</a></li>
+    <li><a href="#ways">Give</a></li>
+    <li><a href="https://thestickofjoseph.com" target="_blank">The Stick of Joseph</a></li>
+    <li><a href="https://thestickofjoseph.com/show-notes" target="_blank">Show Notes</a></li>
+    <li><a href="https://thestickofjoseph.com/events" target="_blank">Events</a></li>
+    <li><a href="https://thestickofjoseph.com/tours" target="_blank">Tours</a></li>
+    <li><a href="mailto:donate@holyscriptureresearch.org">Contact</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="f-rule"></div>
+  <div class="f-legal">
+    Holy Scripture Research Foundation is a 501(c)(3) non-profit — all donations are tax-deductible where permitted.<br>
+    © 2026 Holy Scripture Research Foundation. All rights reserved.<br><br>
+    Listen to The Stick of Joseph on:&nbsp;
+    <a href="https://www.youtube.com/@thestickofjoseph" target="_blank">YouTube</a> &nbsp;·&nbsp;
+    <a href="https://podcasts.apple.com/us/podcast/the-stick-of-joseph/id1844450023" target="_blank">Apple Podcasts</a> &nbsp;·&nbsp;
+    <a href="https://open.spotify.com" target="_blank">Spotify</a>
+  </div>
+</footer>
+
+<script>
+  // Animate progress bars
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.querySelectorAll('.ep-fill').forEach(el => {
+        el.style.height = el.dataset.pct + '%';
+      });
+    }, 500);
+  });
+
+  let selAmt = '25';
+
+  function setAmt(btn, val) {
+    document.querySelectorAll('.a-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    selAmt = val;
+    const ci = document.getElementById('custAmt');
+    ci.style.display = (val === 'custom') ? 'block' : 'none';
+    if (val !== 'custom') ci.value = '';
+  }
+
+  function setFreq(tab) {
+    document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('on'));
+    tab.classList.add('on');
+  }
+
+  function handleDonate() {
+    const ci = document.getElementById('custAmt');
+    const amt = selAmt === 'custom' ? (ci.value || '') : selAmt;
+    if (selAmt === 'custom' && !ci.value) { ci.focus(); return; }
+    // Route to your actual donation processor — update this URL
+    window.location.href = 'https://donorbox.org/the-stick-of-joseph-2?amount=' + amt;
+  }
+
+  function toggleFaq(btn) {
+    const ans = btn.nextElementSibling;
+    const wasOpen = ans.classList.contains('open');
+    document.querySelectorAll('.faq-ans').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+    if (!wasOpen) { ans.classList.add('open'); btn.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
