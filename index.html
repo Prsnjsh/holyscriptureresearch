@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Donate | Holy Scripture Research Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --gold: #C9A84C;
@@ -18,7 +18,12 @@
     --parchment: #F5EDD8;
     --text-light: #D4C4A0;
     --text-muted: #8A7A5A;
+    --soj-orange: #F5A623;
   }
+  /* Override all default blue link colors */
+  a { color: var(--gold); }
+  a:visited { color: var(--gold); }
+  a:hover { color: var(--gold-light); }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { font-family:'Lato',sans-serif; background:var(--deep); color:var(--parchment); overflow-x:hidden; }
@@ -37,8 +42,8 @@ display:flex; align-items:center; justify-content:center;
 font-family:‘Cinzel’,serif; font-size:18px; color:var(–gold);
 background:rgba(201,168,76,0.06); flex-shrink:0;
 }
-.nav-name { font-family:‘Cinzel’,serif; font-size:12px; letter-spacing:0.12em; color:var(–parchment); line-height:1.5; }
-.nav-name span { display:block; font-size:9px; color:var(–gold); letter-spacing:0.25em; text-transform:uppercase; }
+.nav-name { font-family:‘Cinzel’,serif; font-size:12px; letter-spacing:0.12em; color:var(–parchment) !important; line-height:1.5; text-decoration:none; }
+.nav-name span { display:block; font-size:9px; color:var(–gold) !important; letter-spacing:0.25em; text-transform:uppercase; }
 .nav-links { display:flex; gap:32px; list-style:none; font-family:‘Cinzel’,serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; }
 .nav-links a { color:var(–text-light); text-decoration:none; transition:color .2s; }
 .nav-links a:hover { color:var(–gold); }
@@ -82,7 +87,7 @@ animation:glowPulse 4s ease-in-out infinite; pointer-events:none;
 
 .eyebrow {
 font-family:‘Cinzel’,serif; font-size:10px; letter-spacing:0.5em; text-transform:uppercase;
-color:var(–gold); margin-bottom:24px;
+color:var(–gold); margin-bottom:10px;
 display:flex; align-items:center; gap:18px;
 animation:fadeUp .9s ease both;
 }
@@ -92,20 +97,20 @@ animation:fadeUp .9s ease both;
 .hero h1 {
 font-family:‘Cormorant Garamond’,serif;
 font-size:clamp(52px,9vw,108px); font-weight:300; line-height:1.02;
-color:var(–parchment); margin-bottom:14px;
+color:var(–parchment); margin-bottom:6px;
 animation:fadeUp .9s ease .1s both;
 }
 .hero h1 em { font-style:italic; color:var(–gold-light); }
 
 .hero-sub {
 font-family:‘Cinzel’,serif; font-size:clamp(10px,1.5vw,15px); letter-spacing:0.3em; text-transform:uppercase;
-color:var(–gold); margin-bottom:36px;
+color:var(–gold); margin-top:6px; margin-bottom:18px;
 animation:fadeUp .9s ease .18s both;
 }
 
 .hero-desc {
 max-width:600px; font-size:17px; line-height:1.85;
-color:var(–text-light); font-weight:300; margin-bottom:52px;
+color:var(–text-light); font-weight:300; margin-top:4px; margin-bottom:52px;
 animation:fadeUp .9s ease .26s both;
 }
 
@@ -314,7 +319,7 @@ footer { padding:48px 20px 28px; }
 
   <div class="eyebrow">Holy Scripture Research Foundation</div>
 
-  <h1>Bring <em>The Stick<br>of Joseph</em><br>to the World</h1>
+  <h1>Bring <span style="font-family:'Cinzel',serif;font-weight:700;font-style:normal;color:var(--gold-light);display:block;font-size:0.85em;letter-spacing:0.05em;margin-top:4px;margin-bottom:4px;">THE STICK<br>OF JOSEPH</span><span style="font-size:0.6em;font-weight:300;font-family:'Cormorant Garamond',serif;display:block;">to the World</span></h1>
 
   <div class="hero-sub">Honest Conversations &nbsp;·&nbsp; Real Faith &nbsp;·&nbsp; Lasting Hope</div>
 
@@ -569,14 +574,16 @@ footer { padding:48px 20px 28px; }
 </footer>
 
 <script>
-  // Animate progress bars
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.querySelectorAll('.ep-fill').forEach(el => {
-        el.style.height = el.dataset.pct + '%';
-      });
-    }, 500);
-  });
+  // Animate progress bars - trigger on load AND ensure they show
+  function animateBars() {
+    document.querySelectorAll('.ep-fill').forEach(el => {
+      el.style.height = el.dataset.pct + '%';
+    });
+  }
+  // Try multiple triggers to ensure bars animate
+  window.addEventListener('load', () => { setTimeout(animateBars, 300); });
+  document.addEventListener('DOMContentLoaded', () => { setTimeout(animateBars, 300); });
+  setTimeout(animateBars, 1000);
 
   let selAmt = '25';
 
