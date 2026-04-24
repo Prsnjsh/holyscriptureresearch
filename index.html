@@ -219,24 +219,29 @@ background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
 color:var(–parchment); font-family:‘Cormorant Garamond’,serif; font-size:24px; font-weight:300;
 padding:20px 12px; cursor:pointer; transition:all .2s; text-align:center; position:relative;
 }
-.a-btn small { display:block; font-family:‘Lato’,sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(–text-muted); margin-top:4px; }
-.a-btn:hover,.a-btn.on { background:rgba(201,168,76,0.1); border-color:var(–gold); color:var(–gold-light); }
+.a-btn {
+background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
+color:#F5EDD8 !important; font-family:‘Cormorant Garamond’,serif; font-size:24px; font-weight:300;
+padding:20px 12px; cursor:pointer; transition:all .2s; text-align:center; position:relative;
+}
+.a-btn small { display:block; font-family:‘Lato’,sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:#8A7A5A !important; margin-top:4px; }
+.a-btn:hover,.a-btn.on { background:rgba(201,168,76,0.1); border-color:var(–gold); color:#E8C97A !important; }
 .a-btn.on::after { content:‘✓’; position:absolute; top:7px; right:11px; font-size:11px; color:var(–gold); font-family:‘Lato’,sans-serif; }
 
 .c-input {
 width:100%; background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.18);
-color:var(–parchment); font-family:‘Cormorant Garamond’,serif; font-size:22px;
+color:#F5EDD8 !important; font-family:‘Cormorant Garamond’,serif; font-size:22px;
 text-align:center; padding:18px; outline:none; transition:border-color .2s; margin-bottom:24px;
 }
-.c-input::placeholder { color:var(–text-muted); }
-.c-input:focus { border-color:var(–gold); }
+.c-input::placeholder { color:#8A7A5A; }
+.c-input:focus { border-color:#C9A84C; }
 
 .d-submit {
-width:100%; background:var(–gold); color:var(–deep);
+width:100%; background:#C9A84C !important; color:#0D0A06 !important;
 font-family:‘Cinzel’,serif; font-size:12px; letter-spacing:0.3em; font-weight:700; text-transform:uppercase;
 padding:18px; border:none; cursor:pointer; transition:all .25s;
 }
-.d-submit:hover { background:var(–gold-light); box-shadow:0 6px 28px rgba(201,168,76,0.28); }
+.d-submit:hover { background:#E8C97A !important; box-shadow:0 6px 28px rgba(201,168,76,0.28); }
 
 /* Ways grid */
 .w-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:3px; }
