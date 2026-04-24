@@ -21,9 +21,9 @@
     --soj-orange: #F5A623;
   }
   /* Override all default blue link colors */
-  a { color: var(--gold); }
-  a:visited { color: var(--gold); }
-  a:hover { color: var(--gold-light); }
+  a { color: var(--gold); text-decoration:none; background:none; }
+  a:visited { color: var(--gold); background:none; }
+  a:hover { color: var(--gold-light); background:none; }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { font-family:'Lato',sans-serif; background:var(--deep); color:var(--parchment); overflow-x:hidden; }
@@ -134,11 +134,11 @@ margin-bottom:48px; animation:fadeUp .9s ease .34s both;
 
 .cta-row { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation:fadeUp .9s ease .42s both; }
 .btn-g {
-background:var(–gold); color:var(–deep);
+background:var(–gold) !important; color:var(–deep) !important;
 font-family:‘Cinzel’,serif; font-size:11px; letter-spacing:0.3em; text-transform:uppercase; font-weight:700;
 padding:16px 44px; text-decoration:none; border:none; cursor:pointer; transition:all .25s; display:inline-block;
 }
-.btn-g:hover { background:var(–gold-light); transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.28); }
+.btn-g:hover { background:var(–gold-light) !important; transform:translateY(-2px); box-shadow:0 8px 30px rgba(201,168,76,0.28); }
 .btn-o {
 background:transparent; color:var(–parchment);
 font-family:‘Cinzel’,serif; font-size:11px; letter-spacing:0.3em; text-transform:uppercase;
@@ -158,7 +158,7 @@ animation:bob 2.5s ease-in-out infinite;
 .gold-rule { height:1px; background:linear-gradient(to right,transparent,var(–gold) 30%,var(–gold) 70%,transparent); }
 
 /* IMPACT */
-.impact { background:var(–parchment); color:var(–deep); padding:90px 48px 80px; text-align:center; }
+.impact { background:var(–parchment); color:var(–deep); padding:90px 48px 80px; text-align:center; margin-top:0; }
 .sec-eye {
 font-family:‘Cinzel’,serif; font-size:10px; letter-spacing:0.45em; text-transform:uppercase;
 color:var(–gold-dark); margin-bottom:18px;
